@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../data/datasources/news_api_provider.dart';
+import 'package:riverpod_app/features/news/presentation/widgets/tech_cruch_newspage.dart';
+import 'package:riverpod_app/features/news/presentation/widgets/wallstreet_news_page.dart';
+import 'widgets/tesla_news_page.dart'; // Implement this
 
 class NewsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-    final newsAsyncValue = ref.watch(newsProvider);
-
-    return Scaffold(
-      appBar: AppBar(title: Text('TechCrunch News')),
-      body: newsAsyncValue.when(
-        data: (articles) => ListView.builder(
-          itemCount: articles.length,
-          itemBuilder: (context, index) {
-            final article = articles[index];
-            return ListTile(
-              title: Text(article.title ?? ''),
-              subtitle: Text(article.description ?? ''),
-            );
-          },
+    return DefaultTabController(
+      length: 3, // Number of tabs
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('News Categories'),
+          bottom: TabBar(
+            tabs: [
+              Tab(text: 'Tesla'),
+              Tab(text: 'TechCrunch'),
+              Tab(text: 'Wall Street'),
+            ],
+          ),
         ),
-        loading: () => Center(child: CircularProgressIndicator()),
-        error: (error, stack) => Center(child: Text('Error: $error')),
+        body: TabBarView(
+          children: [
+            TeslaNewsPage(), // Implement this widget to display Tesla news
+            TechCrunchNewsPage(), // Implement this widget to display Tesla news
+            WallStreetNewsPage(), // Implement this widget to display Tesla news
+          ],
+        ),
       ),
     );
   }
