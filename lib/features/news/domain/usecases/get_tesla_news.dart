@@ -1,4 +1,4 @@
-// get_tesla_news.dart
+// edit_profile_details.dart
 
 import 'package:riverpod_app/features/news/data/model/news_article_model.dart';
 
