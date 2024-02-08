@@ -2,6 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_app/features/news/data/model/news_article_model.dart';
 import 'package:riverpod_app/features/news/domain/usecases/get_wallstreet_news.dart';
 import '../../../../core/database/database.dart';
+import '../../../../core/network/http_service.dart';
+import '../../../../core/network/http_service_impl.dart';
 import '../../data/datasources/news_local_data_source.dart';
 import '../../data/repositories/news_source_impl.dart';
 import '../../domain/repositories/news_repository.dart';
@@ -18,11 +20,21 @@ final newsLocalDataSourceProvider = Provider<NewsLocalDataSource>((ref) {
 });
 
 
+final httpServiceProvider = Provider<HttpService>((ref) {
+  return HttpServiceImpl(); // Adjust this line according to your implementation
+});
+
+
 // Provider for NewsRemoteDataSource
 /// This provider must be separated
 final newsRemoteDataSourceProvider = Provider<NewsRemoteDataSource>((ref) {
-  // Initialize and return your NewsRemoteDataSource with Dio
-  return NewsRemoteDataSource();
+
+  
+  // Retrieve an instance of HttpService from the provider
+  final httpService = ref.watch(httpServiceProvider);
+  // Pass it to the NewsRemoteDataSource constructor
+  return NewsRemoteDataSource(httpService);
+
 });
 
 
