@@ -1,0 +1,16 @@
+
+/// To generate the database.g.dart which contains the _$MyDatabase superclass,
+/// run dart run build_runner build on the command line.
+
+
+dart run build_runner build
+    -  generates all the required code once.
+
+dart run build_runner watch
+ - watches for changes in your sources and generates code with incremental rebuilds. This is suitable for development sessions.
+
+If you've made changes to your tables or database schema, you need to run the build
+runner to generate the updated code. Use the following command in your terminal:
+
+///flutter packages pub run build_runner build --delete-conflicting-outputs
+

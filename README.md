@@ -130,6 +130,16 @@ samples, guidance on mobile development, and a full API reference.
     abstract classes and interfaces in Flutter to specify the contracts across layers,
     facilitating easier testing and the flexibility of changing implementations.
 
+    
+    1. Data Layer
+    This layer is responsible for managing the application's data - fetching data from external
+    sources (like your APIs), caching data locally, and defining models.
+
+
+    ================
+
+[//]: # Local Database Drift()
+https://medium.com/@balochpalwisha1/drift-database-a-step-by-step-guide-for-beginners-1cb3ac61e37c
 
 
 

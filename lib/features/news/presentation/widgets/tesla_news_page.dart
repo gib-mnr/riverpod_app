@@ -46,7 +46,7 @@ class TeslaNewsPage extends ConsumerWidget {
       },
       ),
       loading: () => Center(child: CircularProgressIndicator()),
-      error: (error, _) => Center(child: Text('Error loading news')),
+      error: (error, _) => Center(child: Text('Error loading news : ${error.toString()}')),
     );
   }
 
